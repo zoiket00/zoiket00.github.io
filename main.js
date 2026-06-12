@@ -5,6 +5,7 @@
   'use strict';
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine   = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const useGSAP = !reduce && window.gsap && window.ScrollTrigger;
   const $  = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
@@ -12,8 +13,7 @@
   let lenis = null;
   if (!reduce && window.Lenis) {
     lenis = new Lenis({ lerp: 0.1, smoothWheel: true, wheelMultiplier: 1 });
-    const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
-    requestAnimationFrame(raf);
+    if (!useGSAP) { const raf = t => { lenis.raf(t); requestAnimationFrame(raf); }; requestAnimationFrame(raf); }
   }
   // Anchors → scroll suave
   $$('a[href^="#"]').forEach(a => {
@@ -68,7 +68,8 @@
 
   /* ── 4 · REVEAL AL HACER SCROLL ── */
   const reveals = $$('.reveal');
-  if (reduce || !('IntersectionObserver' in window)) {
+  if (useGSAP) { /* GSAP maneja los reveals — ver sección 16 */ }
+  else if (reduce || !('IntersectionObserver' in window)) {
     reveals.forEach(el => el.classList.add('in'));
   } else {
     const io = new IntersectionObserver(entries => {
@@ -328,6 +329,50 @@
     render();
   }
 
+  /* ── 15 · GITHUB API EN VIVO ── */
+  (async () => {
+    const reposEl = $('#ghReposList'); if (!reposEl) return;
+    const USER = 'zoiket00';
+    const LC = { JavaScript:'#f1e05a', TypeScript:'#3178c6', Python:'#3572A5', 'C#':'#178600', HTML:'#e34c26', CSS:'#563d7c', Shell:'#89e051', Vue:'#41b883', Dockerfile:'#384d54', PLpgSQL:'#336790', Java:'#b07219' };
+    const esc = s => (s || '').replace(/[<>&]/g, c => ({ '<':'&lt;','>':'&gt;','&':'&amp;' }[c]));
+    try {
+      const [uRes, rRes] = await Promise.all([
+        fetch(`https://api.github.com/users/${USER}`),
+        fetch(`https://api.github.com/users/${USER}/repos?per_page=100&sort=updated`)
+      ]);
+      if (!uRes.ok || !rRes.ok) throw new Error('gh');
+      const user = await uRes.json();
+      let repos = (await rRes.json()).filter(r => !r.fork);
+      const totalStars = repos.reduce((s, r) => s + r.stargazers_count, 0);
+      const langCount = {};
+      repos.forEach(r => { if (r.language) langCount[r.language] = (langCount[r.language] || 0) + 1; });
+      const langs = Object.entries(langCount).sort((a, b) => b[1] - a[1]);
+      const setNum = (id, v) => { const el = $('#' + id); if (el) el.textContent = v; };
+      setNum('ghRepos', user.public_repos ?? repos.length);
+      setNum('ghStars', totalStars);
+      setNum('ghFollowers', user.followers ?? '—');
+      setNum('ghLangs', langs.length);
+      const top = [...repos].sort((a, b) => b.stargazers_count - a.stargazers_count || new Date(b.updated_at) - new Date(a.updated_at)).slice(0, 6);
+      reposEl.innerHTML = top.map(r => `
+        <a class="gh-repo" href="${r.html_url}" target="_blank" rel="noopener">
+          <span class="gh-repo-name">◆ ${esc(r.name)}</span>
+          <p class="gh-repo-desc">${r.description ? esc(r.description) : '—'}</p>
+          <span class="gh-repo-meta">
+            ${r.language ? `<span class="gh-repo-lang"><i class="gh-dot" style="background:${LC[r.language] || '#00ff6a'}"></i>${r.language}</span>` : ''}
+            <span>★ ${r.stargazers_count}</span><span>⑂ ${r.forks_count}</span>
+          </span>
+        </a>`).join('');
+      const maxL = langs.length ? langs[0][1] : 1;
+      const lb = $('#ghLangBars');
+      if (lb) lb.innerHTML = langs.slice(0, 6).map(([name, n]) => `
+        <div><div class="gh-lang-row"><span>${name}</span><span>${n} ${n === 1 ? 'repo' : 'repos'}</span></div>
+        <div class="gh-bar"><i style="width:${Math.round(n / maxL * 100)}%${LC[name] ? `;background:linear-gradient(90deg,${LC[name]},${LC[name]}66)` : ''}"></i></div></div>`).join('');
+    } catch (_) {
+      const es = document.documentElement.lang === 'es';
+      reposEl.innerHTML = `<p class="gh-loading"><a href="https://github.com/${USER}" target="_blank" rel="noopener" style="color:var(--lime);border-bottom:1px solid var(--lime)">github.com/${USER} ↗</a> · ${es ? 'API con límite temporal — abre el perfil' : 'API rate-limited — open the profile'}</p>`;
+    }
+  })();
+
   /* ── 12 · TOAST ── */
   let toastEl;
   function toast(msg) {
@@ -343,5 +388,27 @@
   }
   window.__toast = toast;
 
+  /* ── 16 · GSAP SCROLLTRIGGER (cinematográfico) ── */
+  if (useGSAP) {
+    gsap.registerPlugin(ScrollTrigger);
+    if (lenis) {
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(t => lenis.raf(t * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+    gsap.utils.toArray('.reveal').forEach(el => { el.style.transition = 'none'; gsap.set(el, { opacity: 0, y: 32 }); });
+    ScrollTrigger.batch('.reveal', {
+      start: 'top 88%',
+      onEnter: els => gsap.to(els, { opacity: 1, y: 0, duration: .9, stagger: .09, ease: 'power3.out', overwrite: true })
+    });
+    gsap.to('.home-photo', { yPercent: -10, ease: 'none', scrollTrigger: { trigger: '#home', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('.home-title', { yPercent: 6, ease: 'none', scrollTrigger: { trigger: '#home', start: 'top top', end: 'bottom top', scrub: true } });
+    addEventListener('load', () => ScrollTrigger.refresh());
+    setTimeout(() => ScrollTrigger.refresh(), 1600);
+  }
+
   console.log('%c zoiket00 ', 'background:#00ff6a;color:#000;font-weight:700;padding:2px 8px', 'Full Stack Developer · Open to work');
 })();
+
+/* Service Worker (PWA · cache offline) */
+if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));

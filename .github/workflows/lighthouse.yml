@@ -1,0 +1,25 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Lighthouse (static build)
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          staticDistDir: '.'
+          urls: |
+            index.html
+          uploadArtifacts: true
+          temporaryPublicStorage: true

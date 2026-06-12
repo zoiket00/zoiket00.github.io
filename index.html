@@ -19,6 +19,11 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="zoiket00">
 <title>zoiket00 · Luis David Ibarra — Full Stack Developer</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,6 +33,8 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body data-lang="en">
+
+<canvas id="bg3d" class="bg3d" aria-hidden="true"></canvas>
 
 <!-- ░░ PRELOADER ░░ -->
 <div id="preloader" class="preloader" aria-hidden="true">
@@ -351,6 +358,43 @@
   </div>
 </section>
 
+<!-- ════════════════════ 05 · GITHUB (LIVE) ════════════════════ -->
+<section id="github" class="screen github" aria-label="GitHub activity">
+  <div class="section-head reveal">
+    <span class="sec-index">05</span>
+    <h2 class="sec-title">GITHUB</h2>
+    <span class="sec-rule"></span>
+    <span class="sec-tag" data-es="DATOS EN VIVO · API">LIVE DATA · API</span>
+  </div>
+
+  <div class="gh-top">
+    <div class="gh-stats reveal" id="ghStats">
+      <div class="gh-stat"><span class="gh-num" id="ghRepos">—</span><span class="gh-lab" data-es="Repositorios">Repos</span></div>
+      <div class="gh-stat"><span class="gh-num" id="ghStars">—</span><span class="gh-lab" data-es="Estrellas">Stars</span></div>
+      <div class="gh-stat"><span class="gh-num" id="ghFollowers">—</span><span class="gh-lab" data-es="Seguidores">Followers</span></div>
+      <div class="gh-stat"><span class="gh-num" id="ghLangs">—</span><span class="gh-lab" data-es="Lenguajes">Languages</span></div>
+    </div>
+    <a class="gh-profile reveal" href="https://github.com/zoiket00" target="_blank" rel="noopener">
+      <span data-es="VER PERFIL COMPLETO">VIEW FULL PROFILE</span> <span>↗</span>
+    </a>
+  </div>
+
+  <div class="gh-grid">
+    <div class="gh-repos reveal" id="ghReposList">
+      <p class="gh-loading" data-es="Cargando repos reales desde la API de GitHub…">Loading live repos from GitHub API…</p>
+    </div>
+    <div class="gh-side reveal">
+      <p class="mini-label" data-es="LENGUAJES MÁS USADOS">TOP LANGUAGES</p>
+      <div class="gh-langs" id="ghLangBars"></div>
+    </div>
+  </div>
+
+  <div class="gh-chart reveal">
+    <p class="mini-label" data-es="CONTRIBUCIONES (ÚLTIMO AÑO)">CONTRIBUTIONS (LAST YEAR)</p>
+    <img src="https://ghchart.rshah.org/00ff6a/zoiket00" alt="zoiket00 — GitHub contribution graph" loading="lazy" class="gh-graph">
+  </div>
+</section>
+
 <!-- ════════════════════ 04 · CONTACT ════════════════════ -->
 <section id="contact" class="screen contact" aria-label="Contact">
   <div class="contact-grid">
@@ -449,6 +493,10 @@
 </main>
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="bg.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
