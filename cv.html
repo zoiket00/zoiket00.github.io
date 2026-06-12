@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Luis David Ibarra Almario — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--ink:#0a0e0c;--dim:#52605a;--faint:#8a958f;--green:#00a44f;--line:#e4eae6}
+  html,body{background:#fff}
+  body{font-family:'Inter',sans-serif;color:var(--ink);font-size:10.5px;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:210mm;min-height:297mm;margin:0 auto;padding:16mm 15mm;background:#fff}
+  /* header */
+  .head{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:12px}
+  .name{font-family:'Fraunces',serif;font-weight:840;font-size:34px;line-height:.95;letter-spacing:-.01em;text-transform:uppercase}
+  .name em{font-style:italic;font-weight:500;color:var(--green)}
+  .role{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-top:7px}
+  .contact{text-align:right;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--dim);line-height:1.8;letter-spacing:.01em}
+  .contact b{color:var(--ink);font-weight:500}
+  /* body grid */
+  .grid{display:grid;grid-template-columns:1.55fr 1fr;gap:22px;margin-top:18px}
+  h2{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:var(--green);text-transform:uppercase;margin:0 0 9px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+  section{margin-bottom:16px}
+  .summary{font-size:11px;line-height:1.65;color:#1c2420}
+  .summary b{color:var(--green)}
+  .item{margin-bottom:11px}
+  .item-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .item-t{font-weight:600;font-size:11px;color:var(--ink)}
+  .item-d{font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--faint);white-space:nowrap}
+  .item-s{font-size:10px;color:var(--dim);margin-top:1px}
+  .item-p{font-size:9.8px;color:#39433d;margin-top:3px;line-height:1.5}
+  ul.bul{list-style:none;margin-top:4px}
+  ul.bul li{font-size:9.8px;color:#39433d;padding-left:12px;position:relative;line-height:1.55}
+  ul.bul li::before{content:'▸';position:absolute;left:0;color:var(--green)}
+  .tags{display:flex;flex-wrap:wrap;gap:4px}
+  .tags span{font-family:'JetBrains Mono',monospace;font-size:8px;background:#f1f5f2;border:1px solid var(--line);color:#2c3631;padding:2px 6px;border-radius:3px}
+  .skillcat{margin-bottom:9px}
+  .skillcat .k{font-size:9px;font-weight:600;color:var(--ink);margin-bottom:3px}
+  .lang-row{display:flex;justify-content:space-between;font-size:10px;margin-bottom:3px}
+  .lang-row b{font-weight:500}
+  .bar{height:3px;background:#eef2ef;border-radius:3px;overflow:hidden;margin-bottom:8px}
+  .bar i{display:block;height:100%;background:var(--green)}
+  .foot{margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--faint);letter-spacing:.1em;text-align:center;border-top:1px solid var(--line);padding-top:8px}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="head">
+    <div>
+      <div class="name">Luis David <em>Ibarra</em></div>
+      <div class="role">Full Stack Developer · Systems Engineer</div>
+    </div>
+    <div class="contact">
+      <div><b>luisdavidibarraalmario@gmail.com</b></div>
+      <div>github.com/zoiket00 · linkedin.com/in/zoiket00</div>
+      <div>Cartagena, Colombia · Remote — Global</div>
+    </div>
+  </header>
+
+  <section style="margin-top:14px">
+    <p class="summary">Full Stack Developer &amp; Systems Engineer — <b>"junior in title, senior in mindset."</b> I ship real products: a commercial Windows optimizer on sale (342+ unit tests, Clean Architecture) and systems delivered to real clients. Strong in React/TypeScript, Node, Python and C#/.NET, with a focus on clean code, architecture that scales and security from day one. Seeking my first formal developer role — LATAM &amp; US remote.</p>
+  </section>
+
+  <div class="grid">
+    <!-- MAIN -->
+    <div>
+      <section>
+        <h2>Experience</h2>
+        <div class="item">
+          <div class="item-h"><span class="item-t">Developer — Professional Internship</span><span class="item-d">Jan – Jun 2026</span></div>
+          <div class="item-s">Fundación Juan Felipe Gómez Escobar (Juanfe) · Cartagena</div>
+          <ul class="bul">
+            <li>Built &amp; delivered <b>CIDI Asistencia 2026</b>, a digital attendance-control system for the foundation's programs.</li>
+            <li>Node/Express API on Supabase (PostgreSQL), JWT auth, role-based access and a Chart.js analytics dashboard.</li>
+          </ul>
+        </div>
+        <div class="item">
+          <div class="item-h"><span class="item-t">Creator — PC Optimiz Pro X (Commercial product)</span><span class="item-d">2026 · Live</span></div>
+          <div class="item-s">Solo product · sold on Gumroad</div>
+          <ul class="bul">
+            <li>Windows optimizer in C# / .NET 8 / WPF with Clean Architecture — 24 modules, 342+ unit tests.</li>
+            <li>HMAC-SHA256 PRO/Free licensing system; safety-first design so no destructive op runs by accident.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Selected Projects</h2>
+        <div class="item">
+          <div class="item-h"><span class="item-t">Aprender Para Emprender (APE)</span><span class="item-d">2026</span></div>
+          <div class="item-p">Multi-tenant SaaS monorepo (Turborepo) — Next.js web + Expo mobile sharing logic, on Supabase.</div>
+        </div>
+        <div class="item">
+          <div class="item-h"><span class="item-t">FIORE MAESTRO</span><span class="item-d">2026</span></div>
+          <div class="item-p">Personal multi-LLM AI agent — Python 3.13 / FastAPI, Claude API, ChromaDB, Redis, Docker + CI/CD.</div>
+        </div>
+        <div class="item">
+          <div class="item-h"><span class="item-t">DevForge · AccessGuardian</span><span class="item-d">2025–26</span></div>
+          <div class="item-p">Next.js + Prisma services platform; and an n8n automation auditing access controls (Slack/Docs reporting).</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- SIDE -->
+    <div>
+      <section>
+        <h2>Tech Stack</h2>
+        <div class="skillcat"><div class="k">Frontend</div><div class="tags"><span>React 18</span><span>TypeScript</span><span>Next.js</span><span>Tailwind</span><span>React Native</span></div></div>
+        <div class="skillcat"><div class="k">Backend</div><div class="tags"><span>Node.js</span><span>Express</span><span>FastAPI</span><span>Python</span><span>Supabase</span><span>PostgreSQL</span></div></div>
+        <div class="skillcat"><div class="k">DevOps · Desktop</div><div class="tags"><span>Docker</span><span>GitHub Actions</span><span>Git</span><span>C# / .NET 8</span><span>WPF</span><span>Redis</span></div></div>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <div class="item">
+          <div class="item-t">Ingeniería de Sistemas</div>
+          <div class="item-s">UNITECNAR · In progress</div>
+        </div>
+        <div class="item">
+          <div class="item-t">Tecnólogo en Análisis y Desarrollo de Software</div>
+          <div class="item-s">SENA · Certified</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Languages</h2>
+        <div class="lang-row"><b>Español</b><span>Native</span></div>
+        <div class="bar"><i style="width:100%"></i></div>
+        <div class="lang-row"><b>English</b><span>B1–B2 · Technical</span></div>
+        <div class="bar"><i style="width:62%"></i></div>
+      </section>
+
+      <section>
+        <h2>Highlights</h2>
+        <ul class="bul">
+          <li>Commercial product shipped &amp; on sale</li>
+          <li>System delivered to a real client</li>
+          <li>342+ automated tests written</li>
+          <li>Open to work — Remote (LATAM / US)</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="foot">LUIS DAVID IBARRA ALMARIO · @zoiket00 · zoiket00.github.io · Generated 2026</div>
+</div>
+</body>
+</html>

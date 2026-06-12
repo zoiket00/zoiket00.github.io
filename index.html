@@ -1,452 +1,454 @@
-﻿<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>zoiket00 — Luis David Ibarra Almario</title>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:#03080f;
-  display:flex;align-items:flex-start;justify-content:center;
-  min-height:100vh;padding:30px 20px;
-  font-family:'Exo 2',sans-serif;
-}
-.banner{
-  width:1100px;background:#050d18;
-  border:1px solid rgba(0,245,255,0.2);
-  overflow:hidden;position:relative;
-  box-shadow:0 0 80px rgba(0,245,255,0.06),0 0 160px rgba(0,0,0,0.9);
-}
-.banner::before{
-  content:'';position:absolute;inset:0;
-  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.08) 3px,rgba(0,0,0,0.08) 4px);
-  pointer-events:none;z-index:999;opacity:.4;
-}
+<meta name="theme-color" content="#000000">
+<meta name="description" content="Luis David Ibarra Almario (zoiket00) — Full Stack Developer & Systems Engineer. Junior in title, senior in mindset. Open to remote work — LATAM & US.">
+<meta name="author" content="Luis David Ibarra Almario">
+<meta property="og:title" content="zoiket00 — Full Stack Developer">
+<meta property="og:description" content="Junior in title, senior in mindset. Real projects, real impact. Open to work — Remote.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zoiket00.github.io/">
+<meta property="og:image" content="https://zoiket00.github.io/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zoiket00.github.io/assets/og-image.png">
+<link rel="canonical" href="https://zoiket00.github.io/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>zoiket00 · Luis David Ibarra — Full Stack Developer</title>
 
-/* TOPBAR */
-.topbar{
-  background:#040b15;border-bottom:1px solid rgba(0,245,255,0.15);
-  padding:9px 20px;display:flex;align-items:center;gap:16px;
-}
-.topbar-logo{
-  font-family:'Orbitron',monospace;font-size:13px;font-weight:900;
-  color:#00f5ff;letter-spacing:.2em;
-  text-shadow:0 0 10px rgba(0,245,255,0.5);
-}
-.topbar-sep{color:rgba(0,245,255,0.2);font-size:18px}
-.topbar-tag{font-family:'Share Tech Mono',monospace;font-size:11px;color:rgba(0,245,255,0.35);letter-spacing:.15em}
-.topbar-badges{display:flex;gap:8px;margin-left:auto}
-.tbadge{font-family:'Share Tech Mono',monospace;font-size:9px;padding:3px 12px;border:1px solid;letter-spacing:.12em;text-transform:uppercase}
-.tb-c{color:#00f5ff;border-color:rgba(0,245,255,0.3);background:rgba(0,245,255,0.05)}
-.tb-g{color:#00ff88;border-color:rgba(0,255,136,0.3);background:rgba(0,255,136,0.05)}
-.tb-m{color:#ff006e;border-color:rgba(255,0,110,0.3);background:rgba(255,0,110,0.05)}
-
-/* HERO */
-.hero{
-  background:linear-gradient(135deg,#040c18 0%,#071525 45%,#050e1c 75%,#030810 100%);
-  border-bottom:1px solid rgba(0,245,255,0.12);
-  display:grid;grid-template-columns:160px 1fr 210px;
-  position:relative;overflow:hidden;
-}
-.hero-glow1{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,245,255,0.07) 0%,transparent 70%);top:-150px;left:250px;pointer-events:none}
-.hero-glow2{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,0,110,0.05) 0%,transparent 70%);bottom:-80px;right:60px;pointer-events:none}
-
-/* PHOTO COLUMN */
-.hero-photo{
-  position:relative;overflow:hidden;
-  background:#000;
-  border-right:1px solid rgba(0,245,255,0.15);
-}
-.hero-photo img{
-  width:100%;height:100%;
-  object-fit:cover;object-position:center top;
-  display:block;
-  filter:contrast(1.12) brightness(1.08) saturate(1.08);
-}
-.hero-photo::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to right,transparent 70%,rgba(5,13,24,0.6) 100%),
-             linear-gradient(to bottom,transparent 85%,rgba(5,13,24,0.8) 100%);
-  pointer-events:none;
-}
-.photo-corner{position:absolute;width:10px;height:10px;border-color:#00f5ff;border-style:solid;z-index:2}
-.pc-tl{top:8px;left:8px;border-width:2px 0 0 2px}
-.pc-tr{top:8px;right:8px;border-width:2px 2px 0 0}
-.pc-bl{bottom:8px;left:8px;border-width:0 0 2px 2px}
-.pc-br{bottom:8px;right:8px;border-width:0 2px 2px 0}
-.photo-scan{
-  position:absolute;bottom:0;left:0;right:0;padding:8px 10px;z-index:2;
-  background:linear-gradient(to top,rgba(4,11,21,0.95),transparent);
-}
-.photo-scan-text{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(0,245,255,0.5);letter-spacing:.15em}
-
-/* HERO MID */
-.hero-mid{padding:22px 22px;position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center}
-.hero-eye{font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(0,245,255,0.4);letter-spacing:.25em;margin-bottom:6px}
-.hero-eye span{color:#00f5ff}
-.hero-name{font-family:'Orbitron',monospace;font-weight:900;font-size:28px;line-height:1.05;letter-spacing:.03em;color:#fff;text-shadow:0 0 40px rgba(0,245,255,0.2)}
-.hero-name em{color:#00f5ff;font-style:normal;text-shadow:0 0 20px rgba(0,245,255,0.5)}
-.hero-sub{font-family:'Share Tech Mono',monospace;font-size:13px;color:rgba(90,175,204,0.8);margin-top:9px;letter-spacing:.06em}
-.hero-sub b{color:#00ff88}
-.hero-htags{display:flex;gap:6px;margin-top:11px;flex-wrap:wrap}
-.htag{font-family:'Share Tech Mono',monospace;font-size:9px;padding:3px 10px;border:1px solid rgba(0,245,255,0.15);color:rgba(74,154,176,0.8);letter-spacing:.1em;background:rgba(0,245,255,0.03)}
-.hero-stats{display:flex;gap:10px;margin-top:16px}
-.hstat{text-align:center;padding:8px 14px;border:1px solid rgba(0,245,255,0.12);background:rgba(0,245,255,0.03)}
-.hstat-n{font-family:'Orbitron',monospace;font-size:18px;font-weight:900;color:#00f5ff;line-height:1}
-.hstat-l{font-family:'Share Tech Mono',monospace;font-size:7px;color:rgba(58,122,144,0.7);letter-spacing:.1em;margin-top:2px}
-
-/* HERO RIGHT */
-.hero-right{padding:22px 18px;position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;border-left:1px solid rgba(0,245,255,0.1)}
-.hr-label{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(0,245,255,0.35);letter-spacing:.2em;margin-bottom:8px}
-.hr-quote{font-family:'Exo 2',sans-serif;font-size:12px;color:rgba(90,175,204,0.85);font-style:italic;line-height:1.65}
-.hr-quote strong{color:#00f5ff;font-style:normal;display:block;font-size:13px;font-weight:700;margin-bottom:2px}
-.hr-divider{width:100%;height:1px;background:linear-gradient(to right,rgba(0,245,255,0.2),transparent);margin:14px 0}
-.hr-avail{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,255,136,0.7);letter-spacing:.1em;margin-bottom:8px}
-.hr-avail::before{content:'◆ ';color:#00ff88;font-size:7px}
-.hr-loc{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(58,122,144,0.6);letter-spacing:.1em}
-
-/* ROW 1 */
-.row1{display:grid;grid-template-columns:1fr 1.2fr 1fr;border-bottom:1px solid rgba(0,245,255,0.1)}
-.panel{border-right:1px solid rgba(0,245,255,0.1);padding:16px 18px}
-.panel:last-child{border-right:none}
-.ptitle{
-  font-family:'Orbitron',monospace;font-size:9px;font-weight:700;
-  color:#00f5ff;letter-spacing:.2em;margin-bottom:14px;
-  display:flex;align-items:center;gap:7px;
-  text-shadow:0 0 8px rgba(0,245,255,0.3);
-}
-.ptitle::before{content:'';width:6px;height:6px;background:#00f5ff;flex-shrink:0;box-shadow:0 0 6px rgba(0,245,255,0.6)}
-
-/* ABOUT */
-.ai{font-family:'Share Tech Mono',monospace;font-size:10.5px;color:rgba(90,175,204,0.8);margin-bottom:7px;display:flex;gap:7px;line-height:1.45;align-items:flex-start}
-.ai::before{content:'▸';color:#00f5ff;flex-shrink:0;font-size:9px;margin-top:1px}
-.ai b{color:#c8e6f0}
-
-/* SKILLS */
-.sg-label{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(58,122,144,0.7);letter-spacing:.15em;margin-bottom:7px;margin-top:10px}
-.sg-label:first-of-type{margin-top:0}
-.sicons{display:flex;flex-wrap:wrap;gap:6px}
-.sitem{display:flex;flex-direction:column;align-items:center;gap:2px;width:40px}
-.sbox{width:32px;height:32px;border:1px solid rgba(0,245,255,0.15);background:#040b15;display:flex;align-items:center;justify-content:center;transition:border-color .2s}
-.sbox:hover{border-color:rgba(0,245,255,0.5)}
-.sbox svg{width:18px;height:18px}
-.slbl{font-family:'Share Tech Mono',monospace;font-size:7.5px;color:rgba(58,122,144,0.7);letter-spacing:.04em}
-
-/* GITHUB STATS */
-.grade-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
-.gcard{background:#040b15;border:1px solid rgba(0,245,255,0.12);padding:9px 10px;text-align:center}
-.gcard-n{font-family:'Orbitron',monospace;font-size:19px;font-weight:900;color:#00f5ff;line-height:1}
-.gcard-l{font-family:'Share Tech Mono',monospace;font-size:7px;color:rgba(58,122,144,0.7);letter-spacing:.1em;margin-top:3px}
-.srow{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(0,245,255,0.06)}
-.srow:last-child{border-bottom:none}
-.srow-l{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(58,122,144,0.7)}
-.srow-v{font-family:'Orbitron',monospace;font-size:11px;font-weight:700;color:#00f5ff}
-
-/* ROW 2 */
-.row2{display:grid;grid-template-columns:2fr 1fr;border-bottom:1px solid rgba(0,245,255,0.1)}
-.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.pcard{border:1px solid rgba(0,245,255,0.12);background:#040b15;padding:11px 12px;position:relative;overflow:hidden}
-.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.pcard.prod::before{background:linear-gradient(90deg,#00f5ff,#00ff88)}
-.pcard.func::before{background:linear-gradient(90deg,#ffb300,#ff8800)}
-.pcard-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:5px}
-.pcard-id{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(58,122,144,0.6);letter-spacing:.12em}
-.pcard-status{font-family:'Share Tech Mono',monospace;font-size:7px;padding:2px 7px;border:1px solid;letter-spacing:.08em}
-.ps-dev{color:#ffb300;border-color:rgba(255,179,0,0.3)}
-.ps-done{color:#00ff88;border-color:rgba(0,255,136,0.3)}
-.pcard-name{font-family:'Orbitron',monospace;font-size:10.5px;font-weight:700;color:#c8e6f0;margin-bottom:5px;line-height:1.2}
-.pcard-desc{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,138,160,0.8);line-height:1.45;margin-bottom:6px}
-.pcard-tags{display:flex;gap:4px;flex-wrap:wrap}
-.ptag{font-family:'Share Tech Mono',monospace;font-size:7.5px;padding:2px 6px;border:1px solid rgba(0,245,255,0.1);color:rgba(58,122,144,0.7)}
-
-/* STREAK */
-.row2-right{display:flex;flex-direction:column;border-left:1px solid rgba(0,245,255,0.1)}
-.streak-panel{padding:16px 18px;border-bottom:1px solid rgba(0,245,255,0.1);text-align:center}
-.streak-big{font-family:'Orbitron',monospace;font-size:48px;font-weight:900;color:#00f5ff;line-height:1;text-shadow:0 0 30px rgba(0,245,255,0.4)}
-.streak-lbl{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(58,122,144,0.7);letter-spacing:.2em;margin-top:4px}
-.streak-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:#00ff88;margin-top:4px}
-.graph-panel{padding:14px 18px;flex:1}
-.graph-title{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(58,122,144,0.6);letter-spacing:.18em;margin-bottom:8px}
-.graph-wrap{display:flex;flex-direction:column;gap:2px}
-.graph-row{display:flex;gap:2px}
-.gc{width:11px;height:11px;background:#060f1a}
-.gc.l1{background:#0c3048}.gc.l2{background:#0e5878}.gc.l3{background:#0e90bb}.gc.l4{background:#00f5ff;box-shadow:0 0 4px rgba(0,245,255,0.4)}
-.gmonths{display:flex;justify-content:space-between;margin-top:5px}
-.gmonth{font-family:'Share Tech Mono',monospace;font-size:7px;color:rgba(30,80,100,0.7)}
-
-/* ROW 3 */
-.row3{display:grid;grid-template-columns:1fr 1fr 1fr}
-.slink{display:flex;align-items:center;gap:10px;padding:8px 11px;border:1px solid rgba(0,245,255,0.1);background:#040b15;margin-bottom:6px;cursor:pointer;text-decoration:none;transition:all .2s}
-.slink:last-child{margin-bottom:0}
-.slink:hover{border-color:rgba(0,245,255,0.35);background:rgba(0,245,255,0.04)}
-.slink-icon{width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.slink-icon svg{width:16px;height:16px}
-.slink-name{font-family:'Orbitron',monospace;font-size:8px;color:rgba(74,154,176,0.7);letter-spacing:.12em;display:block}
-.slink-url{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(90,175,204,0.8);display:block;margin-top:1px}
-.gitem{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid rgba(0,245,255,0.06)}
-.gitem:last-child{border-bottom:none}
-.gicon{width:26px;height:26px;border:1px solid rgba(0,245,255,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.gicon svg{width:14px;height:14px}
-.gtxt b{font-family:'Exo 2',sans-serif;font-size:10px;font-weight:700;color:#c8e6f0;display:block;margin-bottom:2px}
-.gtxt span{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,138,160,0.75);line-height:1.4}
-.sup-txt{font-family:'Share Tech Mono',monospace;font-size:9.5px;color:rgba(90,175,204,0.75);line-height:1.6;margin-bottom:12px}
-.sup-txt b{color:#c8e6f0}
-.star-btn{display:flex;align-items:center;gap:10px;padding:11px 14px;background:#060f1a;border:1px solid rgba(255,179,0,0.4);cursor:pointer;width:100%;margin-bottom:10px;transition:all .2s;text-decoration:none}
-.star-btn:hover{border-color:#ffb300;background:rgba(255,179,0,0.06);box-shadow:0 0 12px rgba(255,179,0,0.1)}
-.star-btn svg{width:20px;height:20px;flex-shrink:0}
-.star-n{font-family:'Orbitron',monospace;font-size:16px;font-weight:900;color:#ffb300}
-.star-l{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(160,112,32,0.8);letter-spacing:.1em}
-.avail-box{padding:10px 12px;border:1px solid rgba(0,245,255,0.12);background:rgba(0,245,255,0.03)}
-.avail-title{font-family:'Orbitron',monospace;font-size:7px;color:#00f5ff;letter-spacing:.2em;margin-bottom:6px}
-.avail-item{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(90,175,204,0.75);margin-bottom:4px;display:flex;gap:6px}
-.avail-item::before{content:'▸';color:#00f5ff;font-size:8px}
-
-/* FOOTER */
-.footer{background:#030810;border-top:1px solid rgba(0,245,255,0.12);padding:8px 20px;display:flex;align-items:center;justify-content:space-between}
-.foot-l{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(30,80,100,0.7);letter-spacing:.1em}
-.foot-l span{color:rgba(0,245,255,0.4)}
-.foot-r{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(30,80,100,0.5);letter-spacing:.12em}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+<link rel="stylesheet" href="styles.css">
 </head>
-<body>
-<div class="banner">
+<body data-lang="en">
 
-<div class="topbar">
-  <span class="topbar-logo">&lt;/&gt; ZOIKET00</span>
-  <span class="topbar-sep">|</span>
-  <span class="topbar-tag">&gt;_ DEVELOP. BUILD. SHIP. REPEAT.</span>
-  <div class="topbar-badges">
-    <span class="tbadge tb-c">Systems Engineer</span>
-    <span class="tbadge tb-g">Open to Remote</span>
-    <span class="tbadge tb-m">Building Products</span>
+<!-- ░░ PRELOADER ░░ -->
+<div id="preloader" class="preloader" aria-hidden="true">
+  <div class="pre-inner">
+    <div class="pre-logo">zk<span>//</span></div>
+    <div class="pre-bar"><i id="preBar"></i></div>
+    <div class="pre-count"><span id="preNum">0</span>%</div>
   </div>
+  <div class="pre-word" id="preWord">PORTFOLIO</div>
 </div>
 
-<div class="hero">
-  <div class="hero-glow1"></div>
-  <div class="hero-glow2"></div>
+<!-- ░░ CUSTOM CURSOR ░░ -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
 
-  <div class="hero-photo">
-    <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(145deg,#040b15 0%,#071525 50%,#040b15 100%);position:relative;">
-      <svg viewBox="0 0 140 160" width="140" height="160" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
-        <defs>
-          <radialGradient id="glow" cx="50%" cy="40%" r="50%">
-            <stop offset="0%" stop-color="#00f5ff" stop-opacity="0.12"/>
-            <stop offset="100%" stop-color="#00f5ff" stop-opacity="0"/>
-          </radialGradient>
-          <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#00f5ff"/>
-            <stop offset="100%" stop-color="#0090aa"/>
-          </linearGradient>
-        </defs>
-        <rect width="140" height="160" fill="url(#glow)"/>
-        <!-- circuit lines -->
-        <line x1="0" y1="30" x2="30" y2="30" stroke="#00f5ff" stroke-width="0.5" opacity="0.2"/>
-        <line x1="30" y1="30" x2="30" y2="10" stroke="#00f5ff" stroke-width="0.5" opacity="0.2"/>
-        <line x1="110" y1="30" x2="140" y2="30" stroke="#00f5ff" stroke-width="0.5" opacity="0.2"/>
-        <line x1="110" y1="30" x2="110" y2="10" stroke="#00f5ff" stroke-width="0.5" opacity="0.2"/>
-        <line x1="0" y1="130" x2="30" y2="130" stroke="#00f5ff" stroke-width="0.5" opacity="0.2"/>
-        <line x1="30" y1="130" x2="30" y2="150" stroke="#00f5ff" stroke-width="0.5" opacity="0.2"/>
-        <line x1="110" y1="130" x2="140" y2="130" stroke="#00f5ff" stroke-width="0.5" opacity="0.2"/>
-        <line x1="110" y1="130" x2="110" y2="150" stroke="#00f5ff" stroke-width="0.5" opacity="0.2"/>
-        <!-- outer ring -->
-        <circle cx="70" cy="72" r="50" fill="none" stroke="url(#ring)" stroke-width="1" opacity="0.5"/>
-        <circle cx="70" cy="72" r="44" fill="none" stroke="#00f5ff" stroke-width="0.4" opacity="0.2" stroke-dasharray="4 3"/>
-        <!-- avatar circle -->
-        <circle cx="70" cy="72" r="40" fill="#060f1a"/>
-        <circle cx="70" cy="72" r="40" fill="none" stroke="#00f5ff" stroke-width="1.5" opacity="0.6"/>
-        <!-- initials -->
-        <text x="70" y="63" text-anchor="middle" font-family="'Orbitron',monospace" font-size="18" font-weight="900" fill="#00f5ff" letter-spacing="3" opacity="0.95">ZK</text>
-        <text x="70" y="82" text-anchor="middle" font-family="'Share Tech Mono',monospace" font-size="7" fill="#5aafc0" letter-spacing="2" opacity="0.7">ZOIKET00</text>
-        <!-- scan line -->
-        <line x1="30" y1="110" x2="110" y2="110" stroke="#00f5ff" stroke-width="0.5" opacity="0.15"/>
-        <text x="70" y="122" text-anchor="middle" font-family="'Share Tech Mono',monospace" font-size="6" fill="#00f5ff" letter-spacing="2" opacity="0.4">DEVELOPER</text>
-        <!-- dots -->
-        <circle cx="30" cy="30" r="2" fill="#00f5ff" opacity="0.4"/>
-        <circle cx="110" cy="30" r="2" fill="#00f5ff" opacity="0.4"/>
-        <circle cx="30" cy="130" r="2" fill="#00f5ff" opacity="0.4"/>
-        <circle cx="110" cy="130" r="2" fill="#00f5ff" opacity="0.4"/>
-      </svg>
+<!-- ░░ AMBIENT FX ░░ -->
+<div class="scanlines" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+<div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+
+<!-- ░░ NAV ░░ -->
+<nav class="nav" aria-label="Primary">
+  <a href="#home" class="nav-logo" aria-label="zoiket00 home">
+    <span class="logo-mark">zk</span>
+    <span class="logo-slash">//</span>
+    <span class="logo-name">zoiket00</span>
+  </a>
+  <div class="nav-tabs" role="tablist">
+    <a href="#about"    class="nav-tab" data-es="PERFIL">PROFILE</a>
+    <a href="#projects" class="nav-tab" data-es="PROYECTOS">PROJECTS</a>
+    <a href="#contact"  class="nav-tab" data-es="CONTACTO">CONTACT</a>
+  </div>
+  <div class="nav-right">
+    <button id="cmdkBtn" class="cmdk-btn" aria-label="Open command menu"><kbd>⌘</kbd><kbd>K</kbd></button>
+    <button id="langToggle" class="lang-toggle" aria-label="Switch language">
+      <span class="lang-en is-active">EN</span><span class="lang-sep">/</span><span class="lang-es">ES</span>
+    </button>
+    <span class="nav-status"><i class="dot-live"></i><span data-es="DISPONIBLE">OPEN TO WORK</span></span>
+  </div>
+</nav>
+
+<main>
+
+<!-- ════════════════════ 01 · HOME / MENU ════════════════════ -->
+<section id="home" class="screen home" aria-label="Home">
+  <div class="home-grid">
+
+    <!-- photo blob -->
+    <div class="home-photo reveal">
+      <div class="blob"></div>
+      <div class="blob-ring"></div>
+      <img src="assets/profile.png" alt="Luis David Ibarra Almario" class="cutout" id="heroPhoto">
     </div>
-    <div class="photo-corner pc-tl"></div>
-    <div class="photo-corner pc-tr"></div>
-    <div class="photo-corner pc-bl"></div>
-    <div class="photo-corner pc-br"></div>
-    <div class="photo-scan">
-      <div class="photo-scan-text">ID: ZOIKET00 // VERIFIED</div>
+
+    <!-- title block -->
+    <div class="home-title">
+      <h1 class="bigtitle" aria-label="Portfolio"><span class="bt-letters" aria-hidden="true">PORTFOLIO</span><span class="bigtitle-year">2026</span></h1>
+      <label class="hero-check reveal"><span class="checkbox"></span><span data-es="DESARROLLADOR FULL STACK">FULL STACK DEVELOPER</span></label>
+      <p class="home-name reveal">Luis David Ibarra Almario <span class="home-handle">— @zoiket00</span></p>
+
+      <nav class="menu reveal" aria-label="Menu">
+        <a href="#about" class="menu-item"><span class="menu-arrow">▸</span><span data-es="INICIAR">START</span></a>
+        <a href="#projects" class="menu-item"><span class="menu-arrow">▸</span><span data-es="PROYECTOS">PROJECTS</span></a>
+        <a href="#contact" class="menu-item"><span class="menu-arrow">▸</span><span data-es="CONTACTO">CONTACT</span></a>
+      </nav>
     </div>
   </div>
 
-  <div class="hero-mid">
-    <div class="hero-eye">Hi &gt;_ I'm <span>zoiket00</span></div>
-    <div class="hero-name">LUIS DAVID<br><em>IBARRA ALMARIO</em></div>
-    <div class="hero-sub">I'm a <b>&gt; Systems Engineer |</b> Software Developer</div>
-    <div class="hero-htags">
-      <span class="htag">AI BUILDER</span>
-      <span class="htag">CLEAN ARCH</span>
-      <span class="htag">CARTAGENA CO</span>
-      <span class="htag">REMOTE-READY</span>
-      <span class="htag">TDD ADVOCATE</span>
-      <span class="htag">COMMERCIAL PRODUCTS</span>
+  <!-- hero footer rail -->
+  <div class="home-rail">
+    <div class="rail-left">
+      <span class="rail-mono">CARTAGENA · COLOMBIA</span>
+      <span class="rail-mono dim">10°25′N 75°31′W</span>
     </div>
-    <div class="hero-stats">
-      <div class="hstat"><div class="hstat-n">342+</div><div class="hstat-l">Unit Tests</div></div>
-      <div class="hstat"><div class="hstat-n">9</div><div class="hstat-l">Proyectos</div></div>
-      <div class="hstat"><div class="hstat-n">4</div><div class="hstat-l">Repos Pub.</div></div>
+    <a href="#about" class="scroll-cue" aria-label="Scroll down">
+      <span data-es="DESPLAZA">SCROLL</span>
+      <span class="scroll-line"></span>
+    </a>
+    <div class="rail-right">
+      <span class="rail-mono dim" data-es="DISPONIBLE PARA REMOTO GLOBAL">AVAILABLE · REMOTE GLOBAL</span>
+      <span class="rail-mono">v2026.1</span>
     </div>
   </div>
+</section>
 
-  <div class="hero-right">
-    <div class="hr-label">— DEV QUOTE —</div>
-    <div class="hr-quote">
-      "Junior en título.<br>
-      <strong>Senior en mentalidad.</strong>
-      Construyo productos comerciales<br>desde el primer commit."
-    </div>
-    <div class="hr-divider"></div>
-    <div class="hr-avail">Disponible para trabajo remoto</div>
-    <div class="hr-loc">📍 Cartagena, Colombia · 2026</div>
-  </div>
-</div>
-
-<div class="row1">
-  <div class="panel">
-    <div class="ptitle">ABOUT ME</div>
-    <div class="ai"><b>Construyendo PC Optimiz Pro X</b> — producto Windows comercial con Clean Architecture</div>
-    <div class="ai"><b>Desarrollando FIORE MAESTRO</b> — asistente IA personal next-gen</div>
-    <div class="ai">Buscando oportunidades <b>remotas LATAM / USA</b> como developer</div>
-    <div class="ai">Pregúntame sobre <b>C# · .NET 8 · WPF · Clean Arch</b></div>
-    <div class="ai">Fun fact: <b>342+ unit tests</b> escritos y contando</div>
+<!-- ════════════════════ 02 · ABOUT / PROFILE ════════════════════ -->
+<section id="about" class="screen about" aria-label="Profile">
+  <div class="section-head reveal">
+    <span class="sec-index">02</span>
+    <h2 class="sec-title" data-es="PERFIL">PROFILE</h2>
+    <span class="sec-rule"></span>
   </div>
 
-  <div class="panel">
-    <div class="ptitle">SKILLS &amp; TECHNOLOGIES</div>
-    <div class="sg-label">// Languages &amp; Runtimes</div>
-    <div class="sicons">
-      <div class="sitem"><div class="sbox" title="C#"><svg viewBox="0 0 24 24"><path d="M11.5 2C7.9 2 8.3 4.2 8.3 4.2H11.5v.8H6.8S3 4.6 3 8.6s3.3 3.8 3.3 3.8H8V10.7s-.08-2.4 2.4-2.4h4s2.4.08 2.4-2.4V4.2S16.5 2 11.5 2zm-1.5 1.5c.3 0 .5.2.5.5s-.2.5-.5.5-.5-.2-.5-.5.2-.5.5-.5z" fill="#9b59b6"/><path d="M12.5 22c3.6 0 3.2-2.2 3.2-2.2H12.5v-.8h4.7s3.8.4 3.8-3.6-3.3-3.8-3.3-3.8H16v1.7s.08 2.4-2.4 2.4h-4s-2.4-.08-2.4 2.4v3.7S7.5 22 12.5 22zm1.5-1.5c-.3 0-.5-.2-.5-.5s.2-.5.5-.5.5.2.5.5-.2.5-.5.5z" fill="#9b59b6"/></svg></div><span class="slbl">C#</span></div>
-      <div class="sitem"><div class="sbox" title="Python"><svg viewBox="0 0 24 24"><path d="M11.5 2C7.9 2 8.3 4.2 8.3 4.2H11.5v.8H6.8S3 4.6 3 8.6s3.3 3.8 3.3 3.8H8V10.7s-.08-2.4 2.4-2.4h4s2.4.08 2.4-2.4V4.2S16.5 2 11.5 2zm-1.5 1.5c.3 0 .5.2.5.5s-.2.5-.5.5-.5-.2-.5-.5.2-.5.5-.5z" fill="#3776ab"/><path d="M12.5 22c3.6 0 3.2-2.2 3.2-2.2H12.5v-.8h4.7s3.8.4 3.8-3.6-3.3-3.8-3.3-3.8H16v1.7s.08 2.4-2.4 2.4h-4s-2.4-.08-2.4 2.4v3.7S7.5 22 12.5 22zm1.5-1.5c-.3 0-.5-.2-.5-.5s.2-.5.5-.5.5.2.5.5-.2.5-.5.5z" fill="#ffd43b"/></svg></div><span class="slbl">Python</span></div>
-      <div class="sitem"><div class="sbox" title="TypeScript"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="1" fill="#3178c6"/><path d="M7 11h4v1.5H9.5v6H8v-6H7V11zm6.5 0h4c.8 0 1.5.7 1.5 1.5v1.5c0 .8-.7 1.5-1.5 1.5h-1c-.3 0-.5.2-.5.5v.5h2.5v1.5H13v-2c0-.8.7-1.5 1.5-1.5h1c.3 0 .5-.2.5-.5v-.5H13.5V11z" fill="#fff"/></svg></div><span class="slbl">TypeScript</span></div>
-      <div class="sitem"><div class="sbox" title="JavaScript"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="1" fill="#f7df1e"/><path d="M14 11.5v3.7c0 1.6-1.7 2.8-3 2.8-1.4 0-2.5-.8-3-2l1.7-.9c.2.5.6.9 1.3.9.5 0 1-.3 1-1.2V11.5H14zm4.5 3.4c0 1.7-1.2 2.6-2.8 2.6-1.5 0-2.5-.8-3-2l1.7-.9c.3.5.7 1 1.3 1 .5 0 .8-.2.8-.7 0-.5-.3-.7-1.6-1.3-1.1-.5-2.4-1.2-2.4-2.6 0-1.4 1.1-2.5 2.8-2.5 1.3 0 2.2.5 2.9 1.8l-1.6.9c-.3-.6-.7-.9-1.3-.9-.5 0-.8.3-.8.7 0 .4.3.6 1.5 1.1C17.8 12.4 18.5 13 18.5 14.9z" fill="#222"/></svg></div><span class="slbl">JS</span></div>
-      <div class="sitem"><div class="sbox" title="SQL"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="7" rx="8" ry="3" fill="#336791"/><path d="M4 7v4c0 1.66 3.58 3 8 3s8-1.34 8-3V7c0 1.66-3.58 3-8 3S4 8.66 4 7z" fill="#4a90c4"/><path d="M4 14v3c0 1.66 3.58 3 8 3s8-1.34 8-3v-3c0 1.66-3.58 3-8 3s-8-1.34-8-3z" fill="#336791"/></svg></div><span class="slbl">SQL</span></div>
-      <div class="sitem"><div class="sbox" title="HTML/CSS"><svg viewBox="0 0 24 24"><path d="M4 2l1.5 16L12 20l6.5-2L20 2H4zm12 5H8.5l.2 2h7.1l-.6 6L12 16.5l-3.2-.9-.2-2.4h2l.1 1.2 1.3.4 1.3-.4.2-2.4H8l-.5-5.9H16l-.2 1.5z" fill="#e44d26"/></svg></div><span class="slbl">HTML</span></div>
-    </div>
-    <div class="sg-label">// Frameworks &amp; Tools</div>
-    <div class="sicons">
-      <div class="sitem"><div class="sbox" title=".NET 8"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#512bd4"/><path d="M7 8h2l2.5 4.5L14 8h2l-3.5 6.5L16 20h-2l-2.5-4.5L9 20H7l3.5-6.5L7 8z" fill="#fff" opacity=".9"/></svg></div><span class="slbl">.NET 8</span></div>
-      <div class="sitem"><div class="sbox" title="React"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.2" fill="#61dafb"/><ellipse cx="12" cy="12" rx="9" ry="3.5" stroke="#61dafb" stroke-width="1.2" fill="none"/><ellipse cx="12" cy="12" rx="9" ry="3.5" stroke="#61dafb" stroke-width="1.2" fill="none" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.5" stroke="#61dafb" stroke-width="1.2" fill="none" transform="rotate(120 12 12)"/></svg></div><span class="slbl">React</span></div>
-      <div class="sitem"><div class="sbox" title="Next.js"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff"/><path d="M15 7.5h1.5V17L8 7.5H6.5V17H8v-7l7.8 8.7c.1.1.2.2.2.3V7.5z" fill="#000"/></svg></div><span class="slbl">Next.js</span></div>
-      <div class="sitem"><div class="sbox" title="FastAPI"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#009688"/><path d="M12 4L5 12h7V4zm0 16l7-8h-7v8z" fill="#fff"/></svg></div><span class="slbl">FastAPI</span></div>
-      <div class="sitem"><div class="sbox" title="Docker"><svg viewBox="0 0 24 24"><path d="M22 11.5c-.3-.2-1-.4-2-.3-.2-1.3-.9-2.4-2-3.2l-.4-.3-.3.4c-.4.6-.7 1.4-.7 2.2 0 .5.1 1 .4 1.5-.4.2-.9.4-1.5.4H2.5c-.3 1.1 0 2.7.8 3.8.8 1.1 2.1 1.7 3.7 1.7 3.5 0 6.1-1.6 7.3-4.5.5 0 1.5 0 2-.9 0 0 .2-.3.3-.8l-.6 0z" fill="#2496ed"/><rect x="5" y="9" width="2" height="2" fill="#fff" rx=".3"/><rect x="8" y="9" width="2" height="2" fill="#fff" rx=".3"/><rect x="11" y="9" width="2" height="2" fill="#fff" rx=".3"/><rect x="8" y="7" width="2" height="2" fill="#fff" rx=".3"/><rect x="11" y="7" width="2" height="2" fill="#fff" rx=".3"/></svg></div><span class="slbl">Docker</span></div>
-      <div class="sitem"><div class="sbox" title="Git"><svg viewBox="0 0 24 24"><path d="M23 11.3L12.7 1c-.4-.4-1-.4-1.4 0L9 3.3l2.8 2.8c.6-.2 1.4 0 1.9.5.5.5.7 1.3.5 1.9l2.7 2.7c.7-.2 1.4 0 1.9.5.7.7.7 1.8 0 2.5-.7.7-1.8.7-2.5 0-.5-.5-.7-1.3-.5-1.9L12.5 9.5v7.1c.2.1.3.2.5.4.7.7.7 1.8 0 2.5-.7.7-1.8.7-2.5 0-.7-.7-.7-1.8 0-2.5.2-.2.5-.4.8-.4V9.4c-.3-.1-.5-.3-.8-.4-.7-.7-.7-1.8 0-2.5L7.8 3.7 1 10.7c-.4.4-.4 1 0 1.4L11.3 22c.4.4 1 .4 1.4 0L23 12.7c.4-.4.4-1 0-1.4z" fill="#f05032"/></svg></div><span class="slbl">Git</span></div>
-      <div class="sitem"><div class="sbox" title="Supabase"><svg viewBox="0 0 24 24"><path d="M11.5 2.5L3 14h9v7.5L21 10h-9V2.5z" fill="#3ecf8e"/></svg></div><span class="slbl">Supabase</span></div>
-      <div class="sitem"><div class="sbox" title="Claude AI API"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#d97706"/><path d="M12 5a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 12.5a8 8 0 0 1-6.5-3.3c.04-2.2 4.3-3.4 6.5-3.4s6.46 1.2 6.5 3.4a8 8 0 0 1-6.5 3.3z" fill="#fff" opacity=".9"/></svg></div><span class="slbl">AI API</span></div>
-    </div>
-    <div style="font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(30,80,100,0.6);margin-top:8px;font-style:italic">Always learning something new...</div>
-  </div>
+  <div class="about-grid">
 
-  <div class="panel">
-    <div class="ptitle">GITHUB STATS</div>
-    <div style="font-family:'Orbitron',monospace;font-size:9px;color:rgba(58,122,144,0.6);letter-spacing:.18em;text-align:center;margin-bottom:10px">@zoiket00</div>
-    <div class="grade-grid">
-      <div class="gcard"><div class="gcard-n">9</div><div class="gcard-l">Proyectos</div></div>
-      <div class="gcard"><div class="gcard-n" style="color:#00ff88">A+</div><div class="gcard-l">Calidad</div></div>
-      <div class="gcard"><div class="gcard-n">342+</div><div class="gcard-l">Tests</div></div>
-      <div class="gcard"><div class="gcard-n" style="color:#ffb300">4</div><div class="gcard-l">Repos Pub.</div></div>
-    </div>
-    <div class="srow"><span class="srow-l">Repos públicos</span><span class="srow-v">4 ↗</span></div>
-    <div class="srow"><span class="srow-l">Stack principal</span><span class="srow-v" style="font-size:9px">C# · TS · Python</span></div>
-    <div class="srow"><span class="srow-l">Último push</span><span class="srow-v" style="font-size:9px;color:#00ff88">Mayo 2026</span></div>
-    <div class="srow"><span class="srow-l">Contribuciones</span><span class="srow-v" style="color:#ffb300">100%</span></div>
-  </div>
-</div>
+    <!-- left: identity (typographic, no photo) -->
+    <aside class="about-left reveal">
+      <p class="hello" data-es="HOLA, SOY">HELLO, I AM</p>
+      <h3 class="about-name">Luis<br>David<br><em>Ibarra</em></h3>
+      <p class="about-tagline" data-es="«Junior en título, senior en mentalidad.»">"Junior in title, senior in mindset."</p>
 
-<div class="row2">
-  <div class="panel">
-    <div class="ptitle">MIS PROYECTOS</div>
-    <div class="proj-grid">
-      <div class="pcard prod">
-        <div class="pcard-header"><span class="pcard-id">01 // FLAGSHIP</span><span class="pcard-status ps-dev">● EN DESARROLLO</span></div>
-        <div class="pcard-name">PC OPTIMIZ PRO X</div>
-        <div class="pcard-desc">Optimizador Windows profesional — 24 módulos, rollback HMAC-SHA256, 342+ unit tests, Clean Architecture 4 capas. Free + PRO $9.99</div>
-        <div class="pcard-tags"><span class="ptag">C#</span><span class="ptag">.NET 8</span><span class="ptag">WPF</span><span class="ptag">HMAC</span><span class="ptag">xUnit</span></div>
+      <div class="about-facts">
+        <div class="fact"><span class="fact-k" data-es="UBICACIÓN">LOCATION</span><span class="fact-v">Cartagena, Colombia</span></div>
+        <div class="fact"><span class="fact-k" data-es="DISPONIBILIDAD">AVAILABILITY</span><span class="fact-v"><i class="dot-live"></i> <span data-es="Remoto · Global">Remote · Global</span></span></div>
+        <div class="fact"><span class="fact-k" data-es="ENFOQUE">FOCUS</span><span class="fact-v">Full Stack · Web · Desktop</span></div>
       </div>
-      <div class="pcard prod">
-        <div class="pcard-header"><span class="pcard-id">02</span><span class="pcard-status ps-dev">● EN DESARROLLO</span></div>
-        <div class="pcard-name">FIORE MAESTRO</div>
-        <div class="pcard-desc">Asistente IA personal que ejecuta tareas reales — correo, calendario, vault, PC. Arquitectura modular lista</div>
-        <div class="pcard-tags"><span class="ptag">Python</span><span class="ptag">Claude API</span><span class="ptag">FastAPI</span><span class="ptag">Docker</span></div>
+
+      <div class="about-langs">
+        <p class="mini-label" data-es="IDIOMAS">LANGUAGES</p>
+        <div class="lang-row"><span>Español</span><span class="lang-lvl" data-es="Nativo">Native</span></div>
+        <div class="bar"><i style="width:100%"></i></div>
+        <div class="lang-row"><span>English</span><span class="lang-lvl">B1–B2 · Technical</span></div>
+        <div class="bar"><i style="width:62%"></i></div>
       </div>
-      <div class="pcard func">
-        <div class="pcard-header"><span class="pcard-id">03</span><span class="pcard-status ps-dev">● EN DESARROLLO</span></div>
-        <div class="pcard-name">APRENDER PARA EMPRENDER</div>
-        <div class="pcard-desc">Plataforma edtech para emprendedores con herramientas reales para iniciar negocios</div>
-        <div class="pcard-tags"><span class="ptag">Next.js</span><span class="ptag">Supabase</span><span class="ptag">TypeScript</span></div>
+    </aside>
+
+    <!-- right: about + stack + edu/exp -->
+    <div class="about-right">
+      <div class="about-block reveal">
+        <p class="mini-label" data-es="SOBRE MÍ">ABOUT ME</p>
+        <p class="about-text" data-es="Desarrollador Full Stack e Ingeniero de Sistemas de Cartagena, Colombia. «Junior en título, senior en mentalidad». Construyo productos reales — desde un optimizador comercial de Windows en venta hasta sistemas entregados a clientes reales. Me obsesiona el código limpio, la arquitectura que escala y los detalles que separan lo bueno de lo memorable. Busco mi primer empleo formal como developer: LATAM y US remoto.">I'm a Full Stack Developer & Systems Engineer from Cartagena, Colombia. <b>"Junior in title, senior in mindset."</b> I ship real products — from a commercial Windows optimizer on sale to systems delivered to real clients. I obsess over clean code, architecture that scales, and the details that separate good from memorable. Looking for my first formal role as a developer: LATAM &amp; US remote.</p>
       </div>
-      <div class="pcard func">
-        <div class="pcard-header"><span class="pcard-id">05</span><span class="pcard-status ps-done">✔ ENTREGADO</span></div>
-        <div class="pcard-name">CIDI ASISTENCIA 2026</div>
-        <div class="pcard-desc">Sistema de control de asistencia para institución educativa real. Proyecto de cliente en producción</div>
-        <div class="pcard-tags"><span class="ptag">HTML</span><span class="ptag">JS</span><span class="ptag">TypeScript</span></div>
+
+      <div class="about-block now-block reveal">
+        <p class="mini-label" data-es="AHORA MISMO">CURRENTLY</p>
+        <ul class="now-list">
+          <li><i class="dot-live"></i><span data-es="Práctica profesional @ Fundación Juanfe — hasta jun 2026">Professional internship @ Fundación Juanfe — until Jun 2026</span></li>
+          <li><i class="dot-live"></i><span data-es="Construyendo APE — SaaS multi-tenant para emprendedores">Building APE — multi-tenant SaaS for entrepreneurs</span></li>
+          <li><i class="dot-live"></i><span data-es="Abierto a mi primer empleo formal como dev — remoto">Open to my first formal dev role — remote</span></li>
+        </ul>
+      </div>
+
+      <div class="about-block reveal">
+        <p class="mini-label" data-es="STACK TÉCNICO">TECH STACK</p>
+        <div class="stack-groups">
+          <div class="stack-group">
+            <span class="stack-tag" data-es="FRONTEND">FRONTEND</span>
+            <div class="stack-icons">
+              <span class="skill" title="React"><i class="devicon-react-original colored"></i></span>
+              <span class="skill" title="TypeScript"><i class="devicon-typescript-plain colored"></i></span>
+              <span class="skill" title="Next.js"><i class="devicon-nextjs-plain"></i></span>
+              <span class="skill" title="Tailwind CSS"><i class="devicon-tailwindcss-original colored"></i></span>
+              <span class="skill" title="JavaScript"><i class="devicon-javascript-plain colored"></i></span>
+              <span class="skill" title="HTML5"><i class="devicon-html5-plain colored"></i></span>
+              <span class="skill" title="CSS3"><i class="devicon-css3-plain colored"></i></span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <span class="stack-tag" data-es="BACKEND">BACKEND</span>
+            <div class="stack-icons">
+              <span class="skill" title="Node.js"><i class="devicon-nodejs-plain colored"></i></span>
+              <span class="skill" title="Express"><i class="devicon-express-original" style="color:#fff"></i></span>
+              <span class="skill" title="FastAPI"><i class="devicon-fastapi-plain colored"></i></span>
+              <span class="skill" title="Python"><i class="devicon-python-plain colored"></i></span>
+              <span class="skill" title="Supabase"><i class="devicon-supabase-plain colored"></i></span>
+              <span class="skill" title="PostgreSQL"><i class="devicon-postgresql-plain colored"></i></span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <span class="stack-tag">DEVOPS · DESKTOP</span>
+            <div class="stack-icons">
+              <span class="skill" title="Docker"><i class="devicon-docker-plain colored"></i></span>
+              <span class="skill" title="GitHub"><i class="devicon-github-original" style="color:#fff"></i></span>
+              <span class="skill" title="Git"><i class="devicon-git-plain colored"></i></span>
+              <span class="skill" title="C#"><i class="devicon-csharp-plain colored"></i></span>
+              <span class="skill" title=".NET"><i class="devicon-dot-net-plain colored"></i></span>
+              <span class="skill" title="Redis"><i class="devicon-redis-plain colored"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-two">
+        <div class="about-block reveal">
+          <p class="mini-label" data-es="EDUCACIÓN">EDUCATION</p>
+          <div class="ee-item">
+            <p class="ee-title">Ingeniería de Sistemas</p>
+            <p class="ee-sub">UNITECNAR · <span data-es="En curso">In progress</span></p>
+          </div>
+          <div class="ee-item">
+            <p class="ee-title">Tecnólogo en Análisis y Desarrollo de Software</p>
+            <p class="ee-sub">SENA · <span data-es="Certificado">Certified</span></p>
+          </div>
+        </div>
+        <div class="about-block reveal">
+          <p class="mini-label" data-es="EXPERIENCIA">EXPERIENCE</p>
+          <div class="ee-item">
+            <p class="ee-title">Developer <span data-es="(Práctica profesional)">(Professional internship)</span></p>
+            <p class="ee-sub">Fundación Juan Felipe Gómez Escobar</p>
+            <p class="ee-meta">Jan – Jun 2026</p>
+          </div>
+          <div class="ee-item">
+            <p class="ee-title" data-es="Producto comercial en venta">Commercial product on sale</p>
+            <p class="ee-sub">PC Optimiz Pro X · Gumroad</p>
+            <p class="ee-meta">2026 · <span data-es="Producción">Production</span></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="row2-right">
-    <div class="streak-panel">
-      <div class="ptitle" style="justify-content:center">STREAK STATS</div>
-      <div class="streak-big">9</div>
-      <div class="streak-lbl">PROYECTOS ACTIVOS</div>
-      <div class="streak-sub">Construyendo sin parar ↗</div>
-    </div>
-    <div class="graph-panel">
-      <div class="graph-title">// GITHUB ACTIVITY — 2026</div>
-      <div class="graph-wrap">
-        <div class="graph-row"><div class="gc l1"></div><div class="gc l2"></div><div class="gc l1"></div><div class="gc"></div><div class="gc l3"></div><div class="gc l2"></div><div class="gc l1"></div><div class="gc l4"></div><div class="gc l2"></div><div class="gc l1"></div><div class="gc l3"></div><div class="gc l4"></div><div class="gc l1"></div><div class="gc l2"></div></div>
-        <div class="graph-row"><div class="gc"></div><div class="gc l1"></div><div class="gc l3"></div><div class="gc l4"></div><div class="gc l1"></div><div class="gc l2"></div><div class="gc l3"></div><div class="gc l1"></div><div class="gc"></div><div class="gc l4"></div><div class="gc l2"></div><div class="gc l1"></div><div class="gc l3"></div><div class="gc l4"></div></div>
-        <div class="graph-row"><div class="gc l2"></div><div class="gc l3"></div><div class="gc l4"></div><div class="gc l2"></div><div class="gc"></div><div class="gc l3"></div><div class="gc l1"></div><div class="gc l2"></div><div class="gc l4"></div><div class="gc l1"></div><div class="gc l2"></div><div class="gc l3"></div><div class="gc"></div><div class="gc l4"></div></div>
-        <div class="graph-row"><div class="gc l4"></div><div class="gc l1"></div><div class="gc l2"></div><div class="gc l3"></div><div class="gc l4"></div><div class="gc l1"></div><div class="gc l2"></div><div class="gc l4"></div><div class="gc l1"></div><div class="gc l2"></div><div class="gc l4"></div><div class="gc l2"></div><div class="gc l1"></div><div class="gc l3"></div></div>
-        <div class="graph-row"><div class="gc l1"></div><div class="gc l4"></div><div class="gc l2"></div><div class="gc l1"></div><div class="gc l2"></div><div class="gc l4"></div><div class="gc l1"></div><div class="gc l3"></div><div class="gc l2"></div><div class="gc l1"></div><div class="gc l4"></div><div class="gc l3"></div><div class="gc l2"></div><div class="gc l1"></div></div>
+</section>
+
+<!-- ════════════════════ 03 · PROJECTS ════════════════════ -->
+<section id="projects" class="screen projects" aria-label="Projects">
+  <div class="section-head reveal">
+    <span class="sec-index">03</span>
+    <h2 class="sec-title" data-es="PROYECTOS">PROJECTS</h2>
+    <span class="sec-rule"></span>
+    <span class="sec-tag" data-es="TRABAJO REAL · SIN RELLENO">REAL WORK · NO FILLER</span>
+  </div>
+
+  <div class="proj-grid">
+
+    <!-- 01 PC Optimiz Pro X -->
+    <article class="proj-card feat reveal" data-accent="lime">
+      <div class="proj-top">
+        <span class="proj-idx">01</span>
+        <span class="proj-badge badge-prod" data-es="PRODUCTO COMERCIAL">COMMERCIAL PRODUCT</span>
       </div>
-      <div class="gmonths"><span class="gmonth">Ene</span><span class="gmonth">Feb</span><span class="gmonth">Mar</span><span class="gmonth">Abr</span><span class="gmonth">May</span><span class="gmonth">Jun</span></div>
+      <h3 class="proj-name">PC Optimiz Pro X</h3>
+      <p class="proj-desc" data-es="Optimizador de Windows con seguridad real, arquitectura limpia y modelo de licencias PRO/Free. No es un hobby — está en venta.">Windows optimizer with real safety, clean architecture and a PRO/Free licensing model. Not a hobby project — it's on sale.</p>
+      <div class="proj-metrics">
+        <span class="metric"><b data-count="342" data-suffix="+">0</b> unit tests</span>
+        <span class="metric"><b data-count="24">0</b> <span data-es="módulos">modules</span></span>
+        <span class="metric"><b>PRO/Free</b> <span data-es="licencias">licensing</span></span>
+      </div>
+      <div class="proj-stack">
+        <span>C#</span><span>.NET 8</span><span>WPF</span><span>Clean Arch</span><span>HMAC-SHA256</span>
+      </div>
+      <div class="proj-links">
+        <a href="#" class="plink plink-cta" data-gumroad data-es="Comprar en Gumroad">Buy on Gumroad ↗</a>
+      </div>
+    </article>
+
+    <!-- 02 CIDI Asistencia -->
+    <article class="proj-card feat reveal" data-accent="cyan">
+      <div class="proj-top">
+        <span class="proj-idx">02</span>
+        <span class="proj-badge badge-client" data-es="CLIENTE REAL">REAL CLIENT</span>
+      </div>
+      <h3 class="proj-name">CIDI Asistencia 2026</h3>
+      <p class="proj-desc" data-es="Sistema de control de asistencia digital entregado a la Fundación Juanfe. Proyecto real, cliente real — no ejercicio académico.">Digital attendance-control system delivered to Fundación Juanfe. Real project, real client — not an academic exercise.</p>
+      <div class="proj-metrics">
+        <span class="metric"><b>✓</b> <span data-es="Entregado May 2026">Delivered May 2026</span></span>
+        <span class="metric"><b>JWT</b> auth</span>
+        <span class="metric"><b>Charts</b> <span data-es="dashboard">dashboard</span></span>
+      </div>
+      <div class="proj-stack">
+        <span>Node.js</span><span>Express</span><span>Supabase</span><span>PostgreSQL</span><span>TypeScript</span><span>Chart.js</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/zoiket00/cidi-asistencia-2026-" target="_blank" rel="noopener" class="plink">GitHub ↗</a>
+      </div>
+    </article>
+
+    <!-- 03 APE -->
+    <article class="proj-card reveal" data-accent="lime">
+      <div class="proj-top">
+        <span class="proj-idx">03</span>
+        <span class="proj-badge badge-dev" data-es="EN DESARROLLO">IN DEV</span>
+      </div>
+      <h3 class="proj-name">Aprender Para Emprender</h3>
+      <p class="proj-desc" data-es="SaaS multi-tenant en monorepo para formar emprendedores. Web + móvil compartiendo lógica.">Multi-tenant SaaS monorepo to train entrepreneurs. Web + mobile sharing logic.</p>
+      <div class="proj-stack">
+        <span>React 18</span><span>Expo 52</span><span>Next.js</span><span>Turborepo</span><span>Supabase</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/zoiket00/Aprender-Para-Emprender" target="_blank" rel="noopener" class="plink">GitHub ↗</a>
+      </div>
+    </article>
+
+    <!-- 04 FIORE MAESTRO -->
+    <article class="proj-card reveal" data-accent="violet">
+      <div class="proj-top">
+        <span class="proj-idx">04</span>
+        <span class="proj-badge badge-dev" data-es="EN DESARROLLO">IN DEV</span>
+      </div>
+      <h3 class="proj-name">FIORE MAESTRO</h3>
+      <p class="proj-desc" data-es="Agente IA personal que ejecuta tareas reales: correo, calendario, vault y PC. Arquitectura multi-LLM modular.">Personal AI agent that executes real tasks: email, calendar, vault and PC. Modular multi-LLM architecture.</p>
+      <div class="proj-stack">
+        <span>Python 3.13</span><span>FastAPI</span><span>Claude API</span><span>ChromaDB</span><span>Redis</span><span>Docker</span>
+      </div>
+      <div class="proj-links">
+        <span class="plink plink-soon" data-es="Privado · en desarrollo">Private · in dev</span>
+      </div>
+    </article>
+
+    <!-- 05 DevForge -->
+    <article class="proj-card reveal" data-accent="cyan">
+      <div class="proj-top">
+        <span class="proj-idx">05</span>
+        <span class="proj-badge badge-pub" data-es="PÚBLICO">PUBLIC</span>
+      </div>
+      <h3 class="proj-name">DevForge</h3>
+      <p class="proj-desc" data-es="Portfolio/agencia que vende servicios de desarrollo profesional.">Agency/portfolio platform selling professional development services.</p>
+      <div class="proj-stack">
+        <span>TypeScript</span><span>Next.js</span><span>Tailwind</span><span>Prisma</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/zoiket00/devforge-final" target="_blank" rel="noopener" class="plink">GitHub ↗</a>
+      </div>
+    </article>
+
+    <!-- 06 AccessGuardian -->
+    <article class="proj-card reveal" data-accent="lime">
+      <div class="proj-top">
+        <span class="proj-idx">06</span>
+        <span class="proj-badge badge-pub" data-es="AUTOMATIZACIÓN">AUTOMATION</span>
+      </div>
+      <h3 class="proj-name">AccessGuardian</h3>
+      <p class="proj-desc" data-es="Auditoría automatizada de controles de acceso y usuarios inactivos.">Automated auditing of access controls and inactive users.</p>
+      <div class="proj-stack">
+        <span>n8n</span><span>Google Sheets</span><span>Slack</span><span>Google Docs</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/zoiket00" target="_blank" rel="noopener" class="plink">GitHub ↗</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ════════════════════ 04 · CONTACT ════════════════════ -->
+<section id="contact" class="screen contact" aria-label="Contact">
+  <div class="contact-grid">
+    <div class="contact-left reveal">
+      <div class="section-head">
+        <span class="sec-index">04</span>
+        <h2 class="sec-title" data-es="CONTÁCTAME">CONTACT ME</h2>
+      </div>
+      <div class="contact-id">
+        <div>
+          <p class="contact-name">Luis David<br>Ibarra Almario</p>
+          <p class="contact-role" data-es="Full Stack Developer · Abierto a trabajo remoto">Full Stack Developer · Open to remote work</p>
+        </div>
+      </div>
+
+      <form id="contactForm" class="contact-form" novalidate>
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="Nuevo mensaje desde tu portafolio (zoiket00)">
+        <input type="hidden" name="from_name" value="zoiket00 · Portfolio">
+        <input type="checkbox" name="botcheck" class="cf-bot" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="cf-row">
+          <input class="cf-in" name="name" type="text" required placeholder="Name" aria-label="Name">
+          <input class="cf-in" name="email" type="email" required placeholder="Email" aria-label="Email">
+        </div>
+        <textarea class="cf-in" name="message" required rows="3" placeholder="Your message…" aria-label="Message"></textarea>
+        <div class="cf-bottom">
+          <button type="submit" class="cf-submit"><span data-es="ENVIAR MENSAJE">SEND MESSAGE</span> <span class="cf-arrow">→</span></button>
+          <span class="cf-status" id="cfStatus" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+
+      <ul class="socials">
+        <li><a href="https://github.com/zoiket00" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" class="soc-ic" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.69-3.88-1.37-3.88-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.05.78 2.12v3.14c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+          <span class="soc-label">GitHub</span><span class="soc-handle">/zoiket00</span></a></li>
+        <li><a href="https://linkedin.com/in/zoiket00" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" class="soc-ic" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.74v20.52C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0Z"/></svg>
+          <span class="soc-label">LinkedIn</span><span class="soc-handle">/in/zoiket00</span></a></li>
+        <li><a href="mailto:luisdavidibarraalmario@gmail.com" data-email>
+          <svg viewBox="0 0 24 24" class="soc-ic" aria-hidden="true"><path fill="currentColor" d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm10 7.2 8-5.2H4l8 5.2Zm0 2.3L3 7.6V18h18V7.6l-9 5.9Z"/></svg>
+          <span class="soc-label">Email</span><span class="soc-handle">luisdavidibarraalmario@gmail.com</span></a></li>
+        <li><a href="#" data-gumroad>
+          <svg viewBox="0 0 24 24" class="soc-ic" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1.1 14.6c-2.9 0-4.9-2.1-4.9-4.9 0-2.9 2.1-5 5.1-5 2.3 0 3.9 1.3 4.3 3.2h-2.4c-.3-.7-.9-1.1-1.9-1.1-1.5 0-2.5 1.2-2.5 2.9s1 2.8 2.5 2.8c1.1 0 1.9-.6 2.2-1.6h-2.3v-1.8H17v5.4h-1.9l-.2-1c-.5.7-1.3 1.1-1.8 1.1Z"/></svg>
+          <span class="soc-label">Gumroad</span><span class="soc-handle">PC Optimiz Pro X</span></a></li>
+      </ul>
+
+      <div class="contact-actions">
+        <a href="assets/Luis-David-Ibarra-CV.pdf" class="contact-cv" download>
+          <span data-es="DESCARGAR CV">DOWNLOAD CV</span> <span class="cv-arrow">↓</span>
+        </a>
+      </div>
     </div>
+
+    <div class="contact-right">
+      <h2 class="thankyou reveal">THANK<br>YOU<span class="ty-year">2026</span></h2>
+      <div class="contact-foot reveal">
+        <span class="rail-mono">© 2026 Luis David Ibarra Almario</span>
+        <span class="rail-mono dim" data-es="Diseñado y desarrollado por zoiket00">Designed &amp; built by zoiket00</span>
+        <span class="rail-mono"><i class="dot-live"></i> <span data-es="Abierto a trabajo · Remoto">Open to work · Remote</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ CASE STUDY MODAL ░░ -->
+<div id="caseModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel" role="document">
+    <button class="modal-x" data-close aria-label="Cerrar">✕</button>
+    <span class="modal-badge" id="mBadge"></span>
+    <h3 class="modal-title" id="mTitle"></h3>
+    <p class="modal-tagline" id="mTagline"></p>
+    <div class="modal-grid">
+      <div class="modal-sec"><h4 data-es="PROBLEMA">PROBLEM</h4><p id="mProblem"></p></div>
+      <div class="modal-sec"><h4 data-es="SOLUCIÓN">SOLUTION</h4><p id="mSolution"></p></div>
+    </div>
+    <div class="modal-sec"><h4 data-es="RESULTADOS / IMPACTO">RESULTS / IMPACT</h4><ul id="mResults"></ul></div>
+    <div class="modal-stack" id="mStack"></div>
+    <div class="modal-links" id="mLinks"></div>
   </div>
 </div>
 
-<div class="row3">
-  <div class="panel">
-    <div class="ptitle">CONNECT WITH ME</div>
-    <a href="https://github.com/zoiket00" class="slink"><div class="slink-icon"><svg viewBox="0 0 24 24" fill="#c8e6f0"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.49.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.607.069-.607 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.16 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg></div><div><span class="slink-name">GITHUB</span><span class="slink-url">github.com/zoiket00</span></div></a>
-    <a href="https://linkedin.com/in/zoiket00" class="slink"><div class="slink-icon"><svg viewBox="0 0 24 24" fill="#0077b5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div><div><span class="slink-name">LINKEDIN</span><span class="slink-url">linkedin.com/in/zoiket00</span></div></a>
-    <a href="mailto:luisdavid@zoiket.dev" class="slink"><div class="slink-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" fill="#ff006e"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7" stroke="#050d18" stroke-width="1.5" fill="none"/></svg></div><div><span class="slink-name">EMAIL</span><span class="slink-url">luisdavid@zoiket.dev</span></div></a>
-    <a href="https://gumroad.com" class="slink"><div class="slink-icon"><svg viewBox="0 0 24 24" fill="#ff90e8"><circle cx="12" cy="12" r="10"/><path d="M15.5 11H12v2h1.5a2.5 2.5 0 01-5 0V11a2.5 2.5 0 015 0" fill="#1a0a1a" opacity=".8"/></svg></div><div><span class="slink-name">GUMROAD</span><span class="slink-url">PC Optimiz Pro X — próximamente</span></div></a>
-  </div>
-  <div class="panel">
-    <div class="ptitle">MIS METAS</div>
-    <div class="gitem"><div class="gicon"><svg viewBox="0 0 24 24" fill="#00f5ff"><path d="M12 2L2 7l1.6 9.3L12 22l8.4-5.7L22 7zm.5 9.5h3.5L11 17h-1l1.5-5H8l4.5-8.5v5z"/></svg></div><div class="gtxt"><b>Lanzar PC Optimiz Pro X</b><span>Producto comercial en Gumroad — Free + PRO $9.99</span></div></div>
-    <div class="gitem"><div class="gicon"><svg viewBox="0 0 24 24" fill="#00ff88"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div class="gtxt"><b>Trabajo remoto LATAM / USA</b><span>Developer disponible ahora, remoto</span></div></div>
-    <div class="gitem"><div class="gicon"><svg viewBox="0 0 24 24" fill="#ffb300"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 3a3 3 0 110 6 3 3 0 010-6zm0 14.2a7.2 7.2 0 01-6-3.22c.03-1.99 4-3.08 6-3.08s5.97 1.09 6 3.08a7.2 7.2 0 01-6 3.22z"/></svg></div><div class="gtxt"><b>Completar FIORE MAESTRO</b><span>IA personal next-gen, arquitectura lista</span></div></div>
-    <div class="gitem"><div class="gicon"><svg viewBox="0 0 24 24" fill="#d97706"><path d="M12 2L2 7l1.6 9.3L12 22l8.4-5.7L22 7zm0 4l6 3.3-1 5.7-5 3.3-5-3.3-1-5.7L12 6z"/></svg></div><div class="gtxt"><b>Dominar AI Engineering</b><span>Claude API · MCP Servers · Agentes</span></div></div>
-  </div>
-  <div class="panel">
-    <div class="ptitle">SUPPORT ME</div>
-    <div class="sup-txt">Si mi trabajo te parece valioso, considera darle una <b style="color:#ffb300">★ star</b> a mis repositorios. Me motiva a seguir construyendo.</div>
-    <a href="https://github.com/zoiket00" class="star-btn"><svg viewBox="0 0 24 24" fill="#ffb300"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><div><div class="star-n">★ Star mis repos</div><div class="star-l">GITHUB.COM/ZOIKET00</div></div></a>
-    <div class="avail-box">
-      <div class="avail-title">DISPONIBLE PARA</div>
-      <div class="avail-item">Trabajo remoto full-time</div>
-      <div class="avail-item">Freelance / proyectos</div>
-      <div class="avail-item">Colaboraciones open source</div>
-      <div class="avail-item">Networking y mentorías</div>
+<!-- ░░ COMMAND PALETTE (⌘K) ░░ -->
+<div id="cmdk" class="cmdk" aria-hidden="true">
+  <div class="cmdk-backdrop" data-cmdk-close></div>
+  <div class="cmdk-panel" role="dialog" aria-modal="true" aria-label="Command menu">
+    <div class="cmdk-search">
+      <span class="cmdk-ic">⌘</span>
+      <input id="cmdkInput" type="text" placeholder="Type a command…  (try: projects, cv, email)" autocomplete="off" spellcheck="false">
+      <kbd>ESC</kbd>
     </div>
+    <ul class="cmdk-list" id="cmdkList"></ul>
   </div>
 </div>
 
-<div class="footer">
-  <div class="foot-l">&gt;_ <span>zoiket00</span> · Luis David Ibarra Almario · Cartagena, Colombia · 2026</div>
-  <div class="foot-r">THANKS FOR VISITING — LET'S BUILD THE FUTURE TOGETHER &lt;/&gt;</div>
-</div>
+</main>
 
-</div>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
