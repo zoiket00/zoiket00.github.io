@@ -24,7 +24,7 @@ const CERTS = [
     hours:      "30.5",
     category:   "frontend",
     skills:     ["HTML5", "CSS3", "JavaScript", "Flexbox", "DOM API", "POO", "Bootstrap", "ES6+"],
-    image:      "",
+    image:      "https://udemy-certificate.s3.amazonaws.com/image/UC-8202ca42-6da2-4133-89d4-335eaa10ff48.jpg",
     url:        "https://ude.my/UC-8202ca42-6da2-4133-89d4-335eaa10ff48",
     credential: "UC-8202ca42-6da2-4133-89d4-335eaa10ff48"
   },
