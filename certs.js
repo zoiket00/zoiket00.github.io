@@ -14,7 +14,17 @@
 
 const CERTS = [
 
-  // ─── AGREGA TUS CERTIFICADOS AQUÍ ──────────────────────
+  {
+    name:       "Universidad Desarrollo Web — FrontEnd Web Developer",
+    issuer:     "Udemy",
+    date:       "Oct 2025",
+    category:   "frontend",
+    skills:     ["HTML5", "CSS3", "JavaScript", "Flexbox", "DOM API", "POO", "Bootstrap", "ES6+"],
+    url:        "https://ude.my/UC-8202ca42-6da2-4133-89d4-335eaa10ff48",
+    credential: "UC-8202ca42-6da2-4133-89d4-335eaa10ff48"
+  },
+
+  // ─── AGREGA MÁS CERTIFICADOS AQUÍ ──────────────────────
   //
   // {
   //   name:       "Nombre completo del certificado",
