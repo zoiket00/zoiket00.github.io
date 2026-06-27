@@ -1,78 +1,112 @@
 /* ════════════════════════════════════════════════════════
-   certs.js — zoiket00 · Credentials data + filter UI
+   certs.js — zoiket00 · Verified Expertise system
    ════════════════════════════════════════════════════════
-   Para agregar un certificado, copia el bloque de ejemplo
-   y rellena los campos. La página se actualiza sola.
+
+   Para agregar un certificado:
+   1. Copia el bloque de ejemplo de abajo
+   2. Rellena los campos
+   3. Haz git push — la página se actualiza sola
+
+   Categorías disponibles:
+   backend | frontend | fullstack | cloud |
+   devops  | ai       | mobile    | database | security
    ════════════════════════════════════════════════════════ */
 
-// ─────────────────────────────────────────────────────────
-//  DATOS — agrega tus certificados aquí
-// ─────────────────────────────────────────────────────────
 const CERTS = [
 
-  // ── Ejemplo (borra este bloque cuando tengas los reales):
+  // ─── AGREGA TUS CERTIFICADOS AQUÍ ──────────────────────
+  //
   // {
-  //   name:       "Nombre del certificado",
-  //   issuer:     "SENA / Platzi / Coursera / etc.",
+  //   name:       "Nombre completo del certificado",
+  //   issuer:     "SENA / Google / AWS / Platzi / Coursera…",
   //   date:       "Jun 2025",
-  //   category:   "backend",   // backend | frontend | fullstack | devops | mobile | ai | other
-  //   url:        "https://...",  // enlace al certificado (o "" si no hay)
-  //   credential: "ID-001"     // ID de credencial (opcional, pon "" si no tienes)
+  //   category:   "backend",
+  //   skills:     ["Node.js", "Express", "PostgreSQL", "REST API"],
+  //   url:        "https://enlace-al-certificado.com",
+  //   credential: "ID-OPCIONAL-001"
   // },
+  //
+  // ───────────────────────────────────────────────────────
 
 ];
 
-// ─────────────────────────────────────────────────────────
-//  CONFIG DE CATEGORÍAS
-// ─────────────────────────────────────────────────────────
+/* ── Config visual por categoría ── */
 const CATS = {
   backend:   { label: 'BACKEND',    color: '#21e6ff' },
   frontend:  { label: 'FRONTEND',   color: '#a98bff' },
   fullstack: { label: 'FULL STACK', color: '#00ff6a' },
+  cloud:     { label: 'CLOUD',      color: '#21e6ff' },
   devops:    { label: 'DEVOPS',     color: '#ff9f43' },
-  mobile:    { label: 'MOBILE',     color: '#ff6b9d' },
   ai:        { label: 'AI / ML',    color: '#a98bff' },
-  other:     { label: 'OTHER',      color: 'rgba(255,255,255,.45)' },
+  mobile:    { label: 'MOBILE',     color: '#ff6b9d' },
+  database:  { label: 'DATABASE',   color: '#4ecdc4' },
+  security:  { label: 'SECURITY',   color: '#ff4757' },
 };
 
-// ─────────────────────────────────────────────────────────
-//  RENDER
-// ─────────────────────────────────────────────────────────
+/* ── DOM ── */
 const grid    = document.getElementById('certsGrid');
 const empty   = document.getElementById('certEmpty');
 const filters = document.querySelectorAll('.filter-btn');
 
-function buildCard(cert, delay) {
-  const cat   = CATS[cert.category] || CATS.other;
-  const card  = document.createElement('article');
-  card.className      = 'cert-card reveal';
-  card.dataset.cat    = cert.category;
-  card.style.transitionDelay = delay + 'ms';
+/* ── Build card ── */
+function buildCard(cert, index) {
+  const cat  = CATS[cert.category] || { label: 'OTHER', color: 'rgba(255,255,255,.45)' };
+  const num  = String(index + 1).padStart(3, '0');
 
-  const linkHtml = cert.url
-    ? `<a href="${cert.url}" target="_blank" rel="noopener" class="cert-link">VER CERTIFICADO ↗</a>`
-    : `<span class="cert-link-soon">SIN ENLACE AÚN</span>`;
+  const skillsHtml = (cert.skills && cert.skills.length)
+    ? `<div class="cert-skills-section">
+         <p class="cert-skills-label">SKILLS UNLOCKED</p>
+         <div class="cert-skills">
+           ${cert.skills.map(s => `<span class="cert-skill">${s}</span>`).join('')}
+         </div>
+       </div>
+       <hr class="cert-divider">`
+    : '';
 
   const credHtml = cert.credential
     ? `<span class="cert-credential">ID · ${cert.credential}</span>`
     : '';
 
+  const linkHtml = cert.url
+    ? `<a href="${cert.url}" target="_blank" rel="noopener" class="cert-link">VIEW CREDENTIAL ↗</a>`
+    : `<span class="cert-link-soon">// LINK PENDING</span>`;
+
+  const card = document.createElement('article');
+  card.className   = 'cert-card reveal';
+  card.dataset.cat = cert.category;
+  card.style.transitionDelay = (index * 55) + 'ms';
+
   card.innerHTML = `
-    <div class="cert-top">
-      <span class="cert-badge" style="color:${cat.color};border-color:${cat.color}">${cat.label}</span>
-      <span class="cert-issuer">${cert.issuer}</span>
+    <div class="cert-inner">
+      <div class="cert-header">
+        <span class="cert-num">CREDENTIAL #${num}</span>
+        <span class="cert-verified"><i class="dot-live"></i> VERIFIED</span>
+      </div>
+
+      <div class="cert-meta">
+        <span class="cert-issuer">${cert.issuer}</span>
+        <span class="cert-badge">${cat.label}</span>
+      </div>
+
+      <p class="cert-name">${cert.name}</p>
+
+      <hr class="cert-divider">
+
+      ${skillsHtml}
+
+      <div class="cert-foot">
+        <span class="cert-date">${cert.date}</span>
+        ${credHtml}
+      </div>
+
+      ${linkHtml}
     </div>
-    <p class="cert-name">${cert.name}</p>
-    <hr class="cert-divider">
-    <div class="cert-foot">
-      <span class="cert-date">${cert.date}</span>
-      ${credHtml}
-    </div>
-    ${linkHtml}
   `;
+
   return card;
 }
 
+/* ── Render ── */
 function render(filter) {
   const list = filter === 'all'
     ? CERTS
@@ -89,32 +123,22 @@ function render(filter) {
   empty.classList.remove('visible');
   grid.style.display = 'grid';
 
-  list.forEach((cert, i) => {
-    grid.appendChild(buildCard(cert, i * 50));
-  });
+  list.forEach((cert, i) => grid.appendChild(buildCard(cert, i)));
 
-  // Trigger reveal
   requestAnimationFrame(() => {
     grid.querySelectorAll('.cert-card').forEach(el => el.classList.add('in'));
   });
 }
 
-// ─────────────────────────────────────────────────────────
-//  FILTROS
-// ─────────────────────────────────────────────────────────
+/* ── Filters ── */
 filters.forEach(btn => {
   btn.addEventListener('click', () => {
-    filters.forEach(b => {
-      b.classList.remove('active');
-      b.setAttribute('aria-selected', 'false');
-    });
+    filters.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
     btn.classList.add('active');
     btn.setAttribute('aria-selected', 'true');
     render(btn.dataset.filter);
   });
 });
 
-// ─────────────────────────────────────────────────────────
-//  INIT
-// ─────────────────────────────────────────────────────────
+/* ── Init ── */
 render('all');
