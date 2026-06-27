@@ -119,13 +119,16 @@ function buildCard(cert, index) {
        </div>`
     : '';
 
+  /* nota: los nombres de skills (HTML5, CSS3, JavaScript, etc.) NO se traducen
+     porque son términos técnicos universales */
+
   /* footer */
   const hoursHtml = cert.hours
     ? `<span class="cert-meta-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="11" height="11"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg> ${cert.hours} hrs</span>`
     : '';
 
   const linkHtml = cert.url
-    ? `<a href="${cert.url}" target="_blank" rel="noopener" class="cert-link" data-es="VER CREDENCIAL">VIEW CREDENTIAL ↗</a>`
+    ? `<a href="${cert.url}" target="_blank" rel="noopener" class="cert-link" data-es="VER CREDENCIAL ↗">VIEW CREDENTIAL ↗</a>`
     : '';
 
   const card = document.createElement('article');
@@ -137,7 +140,7 @@ function buildCard(cert, index) {
   card.innerHTML = `
     <div class="cert-inner">
       <div class="cert-header">
-        <span class="cert-verified"><i class="dot-live"></i> VERIFIED</span>
+        <span class="cert-verified"><i class="dot-live"></i> <span data-es="VERIFICADO">VERIFIED</span></span>
         <span class="cert-num">#${num}</span>
       </div>
 
@@ -208,6 +211,8 @@ function render() {
 
   requestAnimationFrame(() => {
     grid.querySelectorAll('.cert-card').forEach(el => el.classList.add('in'));
+    /* Re-aplicar idioma actual a los elementos recién renderizados */
+    if (window.__applyCurrentLang) window.__applyCurrentLang();
   });
 }
 

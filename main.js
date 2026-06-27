@@ -222,21 +222,8 @@
   }
 
   /* ── 10 · TOGGLE DE IDIOMA EN / ES ── */
-  const i18n = $$('[data-es]');
-  i18n.forEach(el => { el.dataset.en = el.innerHTML; });
-  const btn = $('#langToggle'), enS = $('.lang-en', btn), esS = $('.lang-es', btn);
-  function setLang(lang) {
-    document.documentElement.lang = lang;
-    document.body.dataset.lang = lang;
-    i18n.forEach(el => { el[lang === 'es' ? 'textContent' : 'innerHTML'] = lang === 'es' ? el.dataset.es : el.dataset.en; });
-    enS.classList.toggle('is-active', lang === 'en');
-    esS.classList.toggle('is-active', lang === 'es');
-    try { localStorage.setItem('zk-lang', lang); } catch (_) {}
-  }
-  btn.addEventListener('click', () => setLang(document.documentElement.lang === 'es' ? 'en' : 'es'));
-  let saved = 'en';
-  try { saved = localStorage.getItem('zk-lang') || 'en'; } catch (_) {}
-  if (saved === 'es') setLang('es'); else enS.classList.add('is-active');
+  /* Inicialización y persistencia manejadas por lang.js (cargado antes) */
+  const setLang = window.__setLang || (() => {});
 
   /* ── 11 · PLACEHOLDERS (Gumroad) ── */
   const GUMROAD_URL = ''; // ← Jefe: pega aquí la URL real de Gumroad de PC Optimiz Pro X
