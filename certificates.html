@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+<meta name="description" content="Credentials & Certifications — Luis David Ibarra Almario (zoiket00). Validated skills across Backend, Frontend, DevOps and more.">
+<meta property="og:title" content="Credentials · zoiket00">
+<meta property="og:description" content="Certifications and diplomas earned by Luis David Ibarra Almario.">
+<meta property="og:url" content="https://zoiket00.github.io/certificates.html">
+<link rel="canonical" href="https://zoiket00.github.io/certificates.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Credentials · zoiket00</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ░░ AMBIENT FX ░░ -->
+<div class="scanlines" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+<div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+
+<!-- ░░ NAV ░░ -->
+<nav class="nav" aria-label="Primary">
+  <a href="index.html" class="nav-logo" aria-label="zoiket00 home">
+    <span class="logo-mark">zk</span>
+    <span class="logo-slash">//</span>
+    <span class="logo-name">zoiket00</span>
+  </a>
+  <div class="nav-tabs" role="tablist">
+    <a href="index.html#about"    class="nav-tab" data-es="PERFIL">PROFILE</a>
+    <a href="index.html#projects" class="nav-tab" data-es="PROYECTOS">PROJECTS</a>
+    <a href="certificates.html"   class="nav-tab active" data-es="CERTIFICADOS">CREDENTIALS</a>
+    <a href="index.html#contact"  class="nav-tab" data-es="CONTACTO">CONTACT</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-status"><i class="dot-live"></i><span data-es="DISPONIBLE">OPEN TO WORK</span></span>
+  </div>
+</nav>
+
+<main>
+
+<!-- ════ HERO ════ -->
+<section class="certs-hero">
+  <a href="index.html" class="back-link">← BACK TO PORTFOLIO</a>
+  <div class="section-head">
+    <span class="sec-index">04</span>
+    <h1 class="sec-title" data-es="CERTIFICADOS">CREDENTIALS</h1>
+    <span class="sec-rule"></span>
+    <span class="sec-tag" data-es="HABILIDADES VALIDADAS · FORMACIÓN CONTINUA">VALIDATED SKILLS · CONTINUOUS LEARNING</span>
+  </div>
+  <p class="certs-desc" data-es="Certificaciones y diplomas obtenidos a través de formación técnica y continua. Cada uno valida una habilidad real.">Certifications and diplomas earned through technical and continuous education. Each one validates a real, applied skill.</p>
+</section>
+
+<!-- ════ FILTER BAR ════ -->
+<div class="filter-bar" role="tablist" aria-label="Filter by category">
+  <button class="filter-btn active" data-filter="all"       role="tab" aria-selected="true"  data-es="TODOS">ALL</button>
+  <button class="filter-btn"        data-filter="backend"   role="tab" aria-selected="false">BACKEND</button>
+  <button class="filter-btn"        data-filter="frontend"  role="tab" aria-selected="false">FRONTEND</button>
+  <button class="filter-btn"        data-filter="fullstack" role="tab" aria-selected="false">FULL STACK</button>
+  <button class="filter-btn"        data-filter="devops"    role="tab" aria-selected="false">DEVOPS</button>
+  <button class="filter-btn"        data-filter="mobile"    role="tab" aria-selected="false" data-es="MÓVIL">MOBILE</button>
+  <button class="filter-btn"        data-filter="ai"        role="tab" aria-selected="false">AI / ML</button>
+  <button class="filter-btn"        data-filter="other"     role="tab" aria-selected="false" data-es="OTRO">OTHER</button>
+</div>
+
+<!-- ════ CERT GRID ════ -->
+<div class="certs-grid" id="certsGrid" aria-live="polite"></div>
+
+<!-- ════ EMPTY STATE ════ -->
+<div class="cert-empty" id="certEmpty">
+  <p class="cert-empty-code">// certificates.filter(cat).length === 0</p>
+  <p class="cert-empty-msg">NO CREDENTIALS IN THIS CATEGORY</p>
+</div>
+
+</main>
+
+<script src="certs.js"></script>
+</body>
+</html>
